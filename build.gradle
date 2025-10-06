@@ -1,0 +1,10 @@
+/*
+ Root build.gradle: minimal config.
+ The real app is in the "app" subproject.
+*/
+// root build.gradle
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}

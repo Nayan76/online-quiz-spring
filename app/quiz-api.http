@@ -1,0 +1,132 @@
+
+###
+
+# Add question (single choice)
+# Replace :quizId with your quiz id (e.g. d81a7b9b-44b1-4c69-8e86-b2299284e17c)
+POST http://localhost:8080/api/quizzes/8f82e95d-48e0-43dd-af6d-4fac593f9cdb/questions
+Content-Type: application/json
+
+{
+  "text": "What does JS stand for?",
+  "type": "single",
+  "options": [
+    { "id": "a", "text": "Java Source" },
+    { "id": "b", "text": "JavaScript" },
+    { "id": "c", "text": "Just Script" }
+  ],
+  "correctOptionIds": ["b"]
+}
+
+###
+
+# Fetch questions
+GET http://localhost:8080/api/quizzes/8f82e95d-48e0-43dd-af6d-4fac593f9cdb/questions
+
+
+###
+
+# Submit answers (this is the important one)
+# Replace :quizId and :questionId from earlier. Note the exact field names: selectedOptionIds
+POST http://localhost:8080/api/quizzes/8f82e95d-48e0-43dd-af6d-4fac593f9cdb/submit
+Content-Type: application/json
+
+{
+  "answers": [
+    {
+      "questionId": "0193204f-6fca-4a96-a4e4-39b30e293c75",
+      "selectedOptionIds": ["b"]
+    }
+  ]
+}
+
+###
+POST http://localhost:8080/api/quizzes
+Content-Type: application/json
+
+{
+  "title": "JS Basics"
+}
+
+###
+### Create a new quiz
+POST http://localhost:8080/api/quizzes
+Content-Type: application/json
+
+{
+  "title": "JavaScript Basics Quiz"
+}
+
+
+### Add question (single choice)
+POST http://localhost:8080/api/quizzes/26067920-3ada-47fa-b7e5-f4dbc3abe6bf/questions
+Content-Type: application/json
+
+{
+  "text": "What does JS stand for?",
+  "type": "single",
+  "options": [
+    { "id": "a", "text": "Java Source" },
+    { "id": "b", "text": "JavaScript" },
+    { "id": "c", "text": "Just Script" }
+  ],
+  "correctOptionIds": ["b"]
+}
+###Add another question (multiple choice)
+# Add another question (multiple choice)
+POST http://localhost:8080/api/quizzes/26067920-3ada-47fa-b7e5-f4dbc3abe6bf/questions
+Content-Type: application/json
+
+{
+  "text": "Which of the following are JavaScript data types?",
+  "type": "multiple",
+  "options": [
+    { "id": "a", "text": "String" },
+    { "id": "b", "text": "Boolean" },
+    { "id": "c", "text": "Integer" },
+    { "id": "d", "text": "Array" }
+  ],
+  "correctOptionIds": ["a", "b", "d"]
+}
+
+### Add true/false question
+POST http://localhost:8080/api/quizzes/26067920-3ada-47fa-b7e5-f4dbc3abe6bf/questions
+Content-Type: application/json
+
+{
+  "text": "JavaScript is the same as Java",
+  "type": "single",
+  "options": [
+    { "id": "a", "text": "True" },
+    { "id": "b", "text": "False" }
+  ],
+  "correctOptionIds": ["b"]
+}
+
+
+
+### Fetch all questions for the quiz
+GET http://localhost:8080/api/quizzes/26067920-3ada-47fa-b7e5-f4dbc3abe6bf/questions
+
+### Submit answers for the quiz
+POST http://localhost:8080/api/quizzes/26067920-3ada-47fa-b7e5-f4dbc3abe6bf/submit
+Content-Type: application/json
+
+{
+  "answers": [
+    {
+      "questionId": "54e13c99-73a5-45d6-a956-fbddf9b7ff7c",
+      "selectedOptionIds": ["b"]
+    },
+    {
+      "questionId": "7953087c-3b00-4269-9bf2-c346a3a7e7ae",
+      "selectedOptionIds": ["a", "b", "d"]
+    },
+    {
+      "questionId": "71b766be-473a-4ad2-ba18-2df9262ecb06",
+      "selectedOptionIds": ["b"]
+    }
+  ]
+}
+
+### Get quiz results/history
+GET http://localhost:8080/api/quizzes/54e13c99-73a5-45d6-a956-fbddf9b7ff7c/submissions
